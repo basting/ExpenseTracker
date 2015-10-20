@@ -12,23 +12,23 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:weightSum="1"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true">
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentEnd="false"
+        android:layout_centerVertical="true">
 
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtDateOfExpense" />
+            android:id="@+id/txtDateOfExpense"
+            android:inputType="date" />
 
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txtTitle"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:hint="Title" />
+            android:hint="@string/label_title" />
 
         <EditText
             android:layout_width="fill_parent"
@@ -36,15 +36,13 @@
             android:inputType="textMultiLine"
             android:ems="10"
             android:id="@+id/txtDescription"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
             android:hint="@string/label_description" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txtCurrency"
-            android:hint="Currency"
+            android:hint="@string/labelCurrency"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true" />
 
@@ -53,23 +51,19 @@
             android:layout_height="wrap_content"
             android:id="@+id/txtAmount"
             android:hint="@string/label_amount"
-            android:inputType="number|numberDecimal"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" />
+            android:inputType="number|numberDecimal" />
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_add"
             android:id="@+id/btnAdd"
-            android:onClick="btnAddClick"
-            android:layout_below="@+id/txtCurrency"
-            android:layout_alignParentEnd="true" />
+            android:onClick="btnAddClick" />
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Clear"
+            android:text="@string/label_clear"
             android:id="@+id/btnClear"
             android:onClick="btnClearClick" />
     </LinearLayout>

@@ -4,4 +4,7 @@
     <string name="label_description">Description</string>
     <string name="label_amount">Amount</string>
     <string name="label_add">Add</string>
+    <string name="label_title">Title</string>
+    <string name="labelCurrency">Currency</string>
+    <string name="label_clear">Clear</string>
 </resources>
