@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtDescription;
     private EditText txtAmount;
     private TextView txtCurrency;
+    private final String EMPTY = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +84,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnClearClick(View view) {
-        txtAmount.setText("");
-        txtDescription.setText("");
+        txtDateOfExpense.setText(EMPTY);
+        txtTitle.setText(EMPTY);
+        txtAmount.setText(EMPTY);
+        txtDescription.setText(EMPTY);
     }
 }
