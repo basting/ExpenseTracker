@@ -18,7 +18,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_above="@+id/txtAmount"
-        android:hint="Description" />
+        android:hint="@string/label_description" />
 
     <EditText
         android:layout_width="fill_parent"
@@ -26,13 +26,13 @@
         android:id="@+id/txtAmount"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
-        android:hint="Amount"
+        android:hint="@string/label_amount"
         android:inputType="number|numberDecimal" />
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Add"
+        android:text="@string/label_add"
         android:id="@+id/btnAdd"
         android:layout_below="@+id/txtAmount"
         android:layout_alignEnd="@+id/txtAmount"
