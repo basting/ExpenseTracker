@@ -14,16 +14,16 @@
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/txtDescription"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/editText2"
+        android:layout_above="@+id/txtAmount"
         android:hint="Description" />
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText2"
+        android:id="@+id/txtAmount"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:hint="Amount" />
@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:text="Add"
         android:id="@+id/btnAdd"
-        android:layout_below="@+id/editText2"
-        android:layout_alignEnd="@+id/editText2" />
+        android:layout_below="@+id/txtAmount"
+        android:layout_alignEnd="@+id/txtAmount"
+        android:onClick="btnAddClick" />
 </RelativeLayout>
