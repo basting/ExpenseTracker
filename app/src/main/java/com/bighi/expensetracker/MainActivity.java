@@ -71,4 +71,9 @@ public class MainActivity extends AppCompatActivity {
     public void btnAddClick(View view) {
         Toast.makeText(getApplicationContext(), txtDescription.getText() + ":" + txtAmount.getText(), Toast.LENGTH_LONG).show();
     }
+
+    public void btnClearClick(View view) {
+        txtAmount.setText("");
+        txtDescription.setText("");
+    }
 }

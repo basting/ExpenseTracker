@@ -46,11 +46,18 @@
 
         <Button
             android:layout_width="fill_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:text="@string/label_add"
             android:id="@+id/btnAdd"
             android:onClick="btnAddClick"
             android:layout_below="@+id/txtCurrency"
             android:layout_alignParentEnd="true" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Clear"
+            android:id="@+id/btnClear"
+            android:onClick="btnClearClick" />
     </LinearLayout>
 </RelativeLayout>
