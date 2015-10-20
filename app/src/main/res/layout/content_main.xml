@@ -22,7 +22,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txtDateOfExpense"
-            android:inputType="date" />
+            android:inputType="date"
+            android:hint="Date of Expense" />
 
         <EditText
             android:layout_width="fill_parent"
