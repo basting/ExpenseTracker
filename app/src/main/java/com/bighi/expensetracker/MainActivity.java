@@ -15,10 +15,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bighi.expensetracker.com.bighi.expensetracker.util.DateFormatTextWatcher;
+
 import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
 
+    private EditText txtDateOfExpense;
+    private EditText txtTitle;
     private EditText txtDescription;
     private EditText txtAmount;
     private TextView txtCurrency;
@@ -30,9 +34,15 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        txtDateOfExpense = (EditText) findViewById(R.id.txtDateOfExpense);
+        txtTitle = (EditText) findViewById(R.id.txtTitle);
         txtDescription = (EditText) findViewById(R.id.txtDescription);
         txtAmount = (EditText) findViewById(R.id.txtAmount);
         txtCurrency = (TextView) findViewById(R.id.txtCurrency);
+
+
+        EditText editTextDoExp = txtDateOfExpense;
+        editTextDoExp.addTextChangedListener(new DateFormatTextWatcher(editTextDoExp));
 
         txtCurrency.setText(NumberFormat.getCurrencyInstance().getCurrency().getCurrencyCode());
 

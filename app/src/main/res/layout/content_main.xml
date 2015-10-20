@@ -19,7 +19,20 @@
 
         <EditText
             android:layout_width="fill_parent"
-            android:layout_height="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtDateOfExpense" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtTitle"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:hint="Title" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:ems="10"
             android:id="@+id/txtDescription"
@@ -29,7 +42,7 @@
 
         <TextView
             android:layout_width="fill_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:id="@+id/txtCurrency"
             android:hint="Currency"
             android:layout_centerVertical="true"
@@ -60,4 +73,5 @@
             android:id="@+id/btnClear"
             android:onClick="btnClearClick" />
     </LinearLayout>
+
 </RelativeLayout>
