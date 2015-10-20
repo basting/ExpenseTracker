@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.NumberFormat;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText txtDescription;
     private EditText txtAmount;
+    private TextView txtCurrency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
         txtDescription = (EditText) findViewById(R.id.txtDescription);
         txtAmount = (EditText) findViewById(R.id.txtAmount);
-        txtAmount.addTextChangedListener(new CurrencyTextWatcher());
+        txtCurrency = (TextView) findViewById(R.id.txtCurrency);
+
+        txtCurrency.setText(NumberFormat.getCurrencyInstance().getCurrency().getCurrencyCode());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -66,38 +70,5 @@ public class MainActivity extends AppCompatActivity {
 
     public void btnAddClick(View view) {
         Toast.makeText(getApplicationContext(), txtDescription.getText() + ":" + txtAmount.getText(), Toast.LENGTH_LONG).show();
-    }
-
-    class CurrencyTextWatcher implements TextWatcher {
-        String current="";
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            if(!s.toString().equals(current)){
-                txtAmount.removeTextChangedListener(this);
-
-                String replaceable = String.format("[%s,.]",
-                                    NumberFormat.getCurrencyInstance().getCurrency().getDisplayName());
-                String cleanString = s.toString().replaceAll(replaceable, "");
-
-                double parsed = Double.parseDouble(cleanString);
-                String formatted = NumberFormat.getCurrencyInstance().format((parsed/100));
-
-                current = formatted;
-                txtAmount.setText(formatted);
-                txtAmount.setSelection(formatted.length());
-
-                txtAmount.addTextChangedListener(this);
-            }
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-
-        }
     }
 }
