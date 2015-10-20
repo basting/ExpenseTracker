@@ -80,7 +80,9 @@ public class MainActivity extends AppCompatActivity {
             if(!s.toString().equals(current)){
                 txtAmount.removeTextChangedListener(this);
 
-                String cleanString = s.toString().replaceAll("[$,.]", "");
+                String replaceable = String.format("[%s,.]",
+                                    NumberFormat.getCurrencyInstance().getCurrency().getSymbol());
+                String cleanString = s.toString().replaceAll(replaceable, "");
 
                 double parsed = Double.parseDouble(cleanString);
                 String formatted = NumberFormat.getCurrencyInstance().format((parsed/100));
