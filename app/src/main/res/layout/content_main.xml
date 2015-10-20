@@ -9,32 +9,48 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main" tools:context=".MainActivity">
 
-    <EditText
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/txtDescription"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/txtAmount"
-        android:hint="@string/label_description" />
+        android:layout_height="fill_parent"
+        android:weightSum="1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true">
 
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtAmount"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
-        android:hint="@string/label_amount"
-        android:inputType="number|numberDecimal" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="250dp"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/txtDescription"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:hint="@string/label_description" />
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/label_add"
-        android:id="@+id/btnAdd"
-        android:layout_below="@+id/txtAmount"
-        android:layout_alignEnd="@+id/txtAmount"
-        android:onClick="btnAddClick" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:id="@+id/textView"
+            android:hint="Currency"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtAmount"
+            android:hint="@string/label_amount"
+            android:inputType="number|numberDecimal"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:text="@string/label_add"
+            android:id="@+id/btnAdd"
+            android:onClick="btnAddClick"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentEnd="true" />
+    </LinearLayout>
 </RelativeLayout>
