@@ -10,5 +10,13 @@
             android:defaultValue="false"
             />
 
-    </PreferenceCategory>
+        <ListPreference android:title="Group Choice Test "
+        android:entries="@array/PreferencesGroupItems"
+        android:entryValues="@array/PreferencesGroupValues"
+        android:dialogTitle="Choose an option please">
+
+    </ListPreference>
+
+
+</PreferenceCategory>
 </PreferenceScreen>
