@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtAmount;
     private TextView txtCurrency;
     private final String EMPTY = "";
+    private SharedPreferences.OnSharedPreferenceChangeListener onChange;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,13 +71,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void setPreferenceChangeListener() {
-        SharedPreferences.OnSharedPreferenceChangeListener onChange = new SharedPreferences.OnSharedPreferenceChangeListener(){
+        if (onChange == null) {
+            onChange = new SharedPreferences.OnSharedPreferenceChangeListener() {
 
-            @Override
-            public void onSharedPreferenceChanged(SharedPreferences sp, String s) {
-                txtCurrency.setText(sp.getString("currency_pref", "CAD"));
-            }
-        };
+                @Override
+                public void onSharedPreferenceChanged(SharedPreferences sp, String s) {
+                    txtCurrency.setText(sp.getString("currency_pref", "CAD"));
+                }
+            };
+        }
         SharedPreferences sp = AppUtil.getSharedPreferences(getBaseContext());
         sp.registerOnSharedPreferenceChangeListener(onChange);
     }
