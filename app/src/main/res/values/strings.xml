@@ -67,13 +67,33 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
 
-    <string-array name="PreferencesGroupItems"><item>Option1</item>
-        <item>Option2</item>
-        <item>Option3</item>
+    <string-array name="CurrencyGroupItems">
+        <item>Canada Dollar</item>
+        <item>US Dollar</item>
+        <item>Indian Rupee</item>
+        <item>Indonesian Rupiah</item>
+        <item>Singapore Dollar</item>
+        <item>Malaysian Ringgit</item>
+        <item>Japan Yen</item>
+        <item>Australian Dollar</item>
+        <item>Euro</item>
+        <item>British Pound</item>
+        <item>Swiss Franc</item>
+        <item>Chinese Yuan</item>
     </string-array>
 
-    <string-array name="PreferencesGroupValues"><item>OPT1</item>
-        <item>OPT2</item>
-        <item>OPT3</item>
+    <string-array name="CurrencyGroupValues">
+        <item>CAD</item>
+        <item>USD</item>
+        <item>INR</item>
+        <item>IDR</item>
+        <item>SGD</item>
+        <item>MYR</item>
+        <item>JPY</item>
+        <item>AUD</item>
+        <item>EUR</item>
+        <item>GBP</item>
+        <item>CHF</item>
+        <item>CNY</item>
     </string-array>
 </resources>
