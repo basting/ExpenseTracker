@@ -1,7 +1,9 @@
 package com.bighi.expensetracker;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -62,6 +64,21 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        setPreferenceChangeListener();
+    }
+
+
+    private void setPreferenceChangeListener() {
+        SharedPreferences.OnSharedPreferenceChangeListener onChange = new SharedPreferences.OnSharedPreferenceChangeListener(){
+
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+                txtCurrency.setText(s);
+            }
+        };
+        SharedPreferences sp = AppUtil.getSharedPreferences(getBaseContext());
+        sp.registerOnSharedPreferenceChangeListener(onChange);
     }
 
     @Override

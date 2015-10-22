@@ -8,8 +8,12 @@ import android.preference.PreferenceManager;
  * @author Bastin Gomez
  * */
 public class AppUtil {
-    public static String getSelectedCurrency(Context context){
+    public static String getSelectedCurrency(Context context) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-        return sp.getString("currency_pref","CAD");
+        return sp.getString("currency_pref", "CAD");
+    }
+
+    public static SharedPreferences getSharedPreferences(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context);
     }
 }
