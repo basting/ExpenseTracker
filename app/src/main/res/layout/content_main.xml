@@ -18,12 +18,28 @@
         android:layout_alignParentEnd="false"
         android:layout_centerVertical="true">
 
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtDateOfExpense"
-            android:inputType="date"
-            android:hint="Date of Expense" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtDateOfExpense"
+                android:inputType="date"
+                android:hint="Date of Expense"
+                android:layout_weight="1" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Today"
+                android:id="@+id/btnToday"
+                android:onClick="btnTodayClick" />
+        </LinearLayout>
 
         <EditText
             android:layout_width="fill_parent"

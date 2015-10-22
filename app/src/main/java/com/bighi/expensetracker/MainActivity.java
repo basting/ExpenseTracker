@@ -118,4 +118,8 @@ public class MainActivity extends AppCompatActivity {
         txtAmount.setText(EMPTY);
         txtDescription.setText(EMPTY);
     }
+
+    public void btnTodayClick(View view) {
+        Toast.makeText(getApplicationContext(), txtDescription.getText() + ":" + txtAmount.getText(), Toast.LENGTH_LONG).show();
+    }
 }
