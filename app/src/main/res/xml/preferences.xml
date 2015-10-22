@@ -3,7 +3,8 @@
     <PreferenceCategory
         android:title="Options">
 
-        <ListPreference android:title="Currency"
+        <ListPreference android:key="currency_pref"
+            android:title="Currency"
             android:summary="Current selected value: %s"
         android:entries="@array/CurrencyGroupItems"
         android:entryValues="@array/CurrencyGroupValues"

@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bighi.expensetracker.com.bighi.expensetracker.util.AppUtil;
 import com.bighi.expensetracker.com.bighi.expensetracker.util.DateFormatTextWatcher;
 
 import java.text.NumberFormat;
@@ -33,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         txtDateOfExpense = (EditText) findViewById(R.id.txtDateOfExpense);
         txtTitle = (EditText) findViewById(R.id.txtTitle);
@@ -42,11 +43,16 @@ public class MainActivity extends AppCompatActivity {
         txtAmount = (EditText) findViewById(R.id.txtAmount);
         txtCurrency = (TextView) findViewById(R.id.txtCurrency);
 
-
         EditText editTextDoExp = txtDateOfExpense;
         editTextDoExp.addTextChangedListener(new DateFormatTextWatcher(editTextDoExp));
 
-        txtCurrency.setText(NumberFormat.getCurrencyInstance().getCurrency().getCurrencyCode());
+        String currCurrency = AppUtil.getSelectedCurrency(getBaseContext());
+
+        if(currCurrency == null) {
+            currCurrency = NumberFormat.getCurrencyInstance().getCurrency().getCurrencyCode();
+        }
+
+        txtCurrency.setText(currCurrency);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
