@@ -73,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.OnSharedPreferenceChangeListener onChange = new SharedPreferences.OnSharedPreferenceChangeListener(){
 
             @Override
-            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
-                txtCurrency.setText(s);
+            public void onSharedPreferenceChanged(SharedPreferences sp, String s) {
+                txtCurrency.setText(sp.getString("currency_pref", "CAD"));
             }
         };
         SharedPreferences sp = AppUtil.getSharedPreferences(getBaseContext());
