@@ -4,10 +4,11 @@
         android:title="Options">
 
         <ListPreference android:title="Currency"
-            android:summary="Select a currency to use"
+            android:summary="Current value: %s"
         android:entries="@array/CurrencyGroupItems"
         android:entryValues="@array/CurrencyGroupValues"
-        android:dialogTitle="Choose an currency">
+        android:dialogTitle="Choose an currency"
+            android:defaultValue="0">
 
     </ListPreference>
 
