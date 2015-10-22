@@ -21,7 +21,11 @@ import android.widget.Toast;
 import com.bighi.expensetracker.com.bighi.expensetracker.util.AppUtil;
 import com.bighi.expensetracker.com.bighi.expensetracker.util.DateFormatTextWatcher;
 
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -120,6 +124,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnTodayClick(View view) {
-        Toast.makeText(getApplicationContext(), txtDescription.getText() + ":" + txtAmount.getText(), Toast.LENGTH_LONG).show();
+        Calendar today = new GregorianCalendar();
+        DateFormat df = new SimpleDateFormat(DateFormatTextWatcher.mmddyyyy);
+        String todayStr = df.format(today.getTime());
+        txtDateOfExpense.setText(todayStr);
     }
 }
