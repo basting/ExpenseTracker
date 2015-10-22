@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.bighi.expensetracker.com.bighi.expensetracker.util.AppUtil;
 import com.bighi.expensetracker.com.bighi.expensetracker.util.DateFormatTextWatcher;
+import com.firebase.client.Firebase;
 
 import java.text.DateFormat;
 import java.text.NumberFormat;
@@ -40,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Firebase setup code
+        Firebase.setAndroidContext(this);
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
