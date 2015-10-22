@@ -3,17 +3,11 @@
     <PreferenceCategory
         android:title="Options">
 
-        <CheckBoxPreference
-            android:key="opt_shuffle_cards"
-            android:title="Shuffle"
-            android:summary="Tick to shuffle the cards"
-            android:defaultValue="false"
-            />
-
-        <ListPreference android:title="Group Choice Test "
+        <ListPreference android:title="Currency"
+            android:summary="Select the currency to use"
         android:entries="@array/CurrencyGroupItems"
         android:entryValues="@array/CurrencyGroupValues"
-        android:dialogTitle="Choose an option please">
+        android:dialogTitle="Choose an currency">
 
     </ListPreference>
 
