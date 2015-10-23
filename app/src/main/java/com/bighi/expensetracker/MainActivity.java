@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtDescription;
     private EditText txtAmount;
     private TextView txtCurrency;
-    private final String EMPTY = "";
     private SharedPreferences.OnSharedPreferenceChangeListener onChange;
     private Firebase myFirebaseRef;
 
@@ -124,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnClearClick(View view) {
+        final String EMPTY = "";
         txtDateOfExpense.setText(EMPTY);
         txtTitle.setText(EMPTY);
         txtAmount.setText(EMPTY);
