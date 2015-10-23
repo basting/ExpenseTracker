@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), txtDescription.getText() + ":" + txtAmount.getText(), Toast.LENGTH_LONG).show();
     }
 
-    /*@Override
+    @Override
     public Dialog onCreateDialog(Bundle savedInstance) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
         // Add the buttons
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         return builder.create();
-    }*/
+    }
 
     public void btnClearClick(View view) {
         final String EMPTY = "";
