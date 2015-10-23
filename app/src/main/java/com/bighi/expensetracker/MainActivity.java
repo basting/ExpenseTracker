@@ -1,6 +1,7 @@
 package com.bighi.expensetracker;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -124,6 +125,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void btnAddClick(View view) {
         Toast.makeText(getApplicationContext(), txtDescription.getText() + ":" + txtAmount.getText(), Toast.LENGTH_LONG).show();
+    }
+
+    /*@Override
+    public Dialog onCreateDialog(Bundle savedInstance) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
         // Add the buttons
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
@@ -136,9 +141,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "cancelled action", Toast.LENGTH_LONG).show();
             }
         });
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
+        return builder.create();
+    }*/
 
     public void btnClearClick(View view) {
         final String EMPTY = "";
