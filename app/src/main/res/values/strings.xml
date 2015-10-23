@@ -96,4 +96,5 @@
         <item>CHF</item>
         <item>CNY</item>
     </string-array>
+    <string name="title_activity_expenses_list">ExpensesListActivity</string>
 </resources>

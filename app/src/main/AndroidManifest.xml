@@ -22,7 +22,12 @@
         </activity>
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings">
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name=".ExpensesListActivity"
+            android:label="@string/title_activity_expenses_list"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 
