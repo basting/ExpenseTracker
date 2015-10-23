@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtCurrency;
     private final String EMPTY = "";
     private SharedPreferences.OnSharedPreferenceChangeListener onChange;
+    private Firebase myFirebaseRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Firebase setup code
         Firebase.setAndroidContext(this);
+        myFirebaseRef = new Firebase("https://expensetrackerbase.firebaseio.com/");
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -135,3 +137,4 @@ public class MainActivity extends AppCompatActivity {
         txtDateOfExpense.setText(todayStr);
     }
 }
+
