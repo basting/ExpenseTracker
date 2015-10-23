@@ -86,9 +86,9 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onSharedPreferenceChanged(SharedPreferences sp, String s) {
+                    // TODO: to convert short currency code to full description
                     String currShort = sp.getString("currency_pref", "CAD");
-                    String currLong = sp.getAll().get(currShort).toString();
-                    txtCurrency.setText(currLong);
+                    txtCurrency.setText(currShort);
                 }
             };
         }
