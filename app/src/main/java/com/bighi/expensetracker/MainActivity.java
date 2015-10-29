@@ -2,6 +2,7 @@ package com.bighi.expensetracker;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bighi.expensetracker.com.bighi.expensetracker.util.AppUtil;
+import com.bighi.expensetracker.com.bighi.expensetracker.util.DateDialog;
 import com.bighi.expensetracker.com.bighi.expensetracker.util.DateFormatTextWatcher;
 import com.firebase.client.Firebase;
 
@@ -60,7 +62,17 @@ public class MainActivity extends AppCompatActivity {
         txtCurrency = (TextView) findViewById(R.id.txtCurrency);
 
         EditText editTextDoExp = txtDateOfExpense;
-        editTextDoExp.addTextChangedListener(new DateFormatTextWatcher(editTextDoExp));
+        editTextDoExp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    DateDialog dialog = new DateDialog(v);
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    dialog.show(ft, "DatePicker");
+                }
+            }
+        });
+        //editTextDoExp.addTextChangedListener(new DateFormatTextWatcher(editTextDoExp));
 
         String currCurrency = AppUtil.getSelectedCurrency(getBaseContext());
 
@@ -127,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), txtDescription.getText() + ":" + txtAmount.getText(), Toast.LENGTH_LONG).show();
     }
 
-    @Override
+    /*@Override
     public Dialog onCreateDialog(Bundle savedInstance) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
         // Add the buttons
@@ -142,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         return builder.create();
-    }
+    }*/
 
     public void btnClearClick(View view) {
         final String EMPTY = "";

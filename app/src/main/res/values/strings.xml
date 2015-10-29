@@ -99,4 +99,7 @@
     <string name="title_activity_expenses_list">Expenses List</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
