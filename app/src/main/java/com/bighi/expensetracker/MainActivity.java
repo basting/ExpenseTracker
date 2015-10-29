@@ -35,7 +35,7 @@ import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView txtDateOfExpense;
+    private EditText txtDateOfExpense;
     private EditText txtTitle;
     private EditText txtDescription;
     private EditText txtAmount;
@@ -55,13 +55,13 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        txtDateOfExpense = (TextView) findViewById(R.id.txtDateOfExpense);
+        txtDateOfExpense = (EditText) findViewById(R.id.txtDateOfExpense);
         txtTitle = (EditText) findViewById(R.id.txtTitle);
         txtDescription = (EditText) findViewById(R.id.txtDescription);
         txtAmount = (EditText) findViewById(R.id.txtAmount);
         txtCurrency = (TextView) findViewById(R.id.txtCurrency);
 
-        TextView editTextDoExp = txtDateOfExpense;
+        EditText editTextDoExp = txtDateOfExpense;
         editTextDoExp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {

@@ -18,19 +18,28 @@
         android:layout_alignParentEnd="false"
         android:layout_centerVertical="true">
 
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtTitle"
+            android:hint="@string/label_title" />
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:weightSum="1">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <EditText
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/txtDateOfExpense"
                 android:inputType="date"
+                android:layout_weight="1"
                 android:hint="@string/dateOfExpenseHint"
-                android:layout_weight="1" />
+                android:clickable="false"
+                android:enabled="true" />
 
             <Button
                 style="?android:attr/buttonStyleSmall"
@@ -39,13 +48,8 @@
                 android:text="@string/txtToday"
                 android:id="@+id/btnToday"
                 android:onClick="btnTodayClick" />
-        </LinearLayout>
 
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtTitle"
-            android:hint="@string/label_title" />
+        </LinearLayout>
 
         <EditText
             android:layout_width="fill_parent"
