@@ -24,19 +24,19 @@
             android:layout_height="match_parent"
             android:weightSum="1">
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtDateOfExpense"
                 android:inputType="date"
-                android:hint="Date of Expense"
+                android:hint="@string/dateOfExpenseHint"
                 android:layout_weight="1" />
 
             <Button
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Today"
+                android:text="@string/txtToday"
                 android:id="@+id/btnToday"
                 android:onClick="btnTodayClick" />
         </LinearLayout>

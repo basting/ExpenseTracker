@@ -66,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
-                    DateDialog dialog = new DateDialog(v);
+                    DateDialog dialog = new DateDialog();
+                    dialog.setView(v);
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
                     dialog.show(ft, "DatePicker");
                 }
