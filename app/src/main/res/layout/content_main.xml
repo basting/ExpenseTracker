@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/txtDateOfExpense"
-                android:inputType="date"
+                android:inputType="none"
                 android:layout_weight="1"
                 android:hint="@string/dateOfExpenseHint"
                 android:clickable="false"
