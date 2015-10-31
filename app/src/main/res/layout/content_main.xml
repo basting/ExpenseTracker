@@ -16,7 +16,8 @@
         android:weightSum="1"
         android:layout_alignParentBottom="false"
         android:layout_alignParentEnd="false"
-        android:layout_centerVertical="true">
+        android:layout_centerVertical="true"
+        android:id="@+id/linearLayout">
 
         <EditText
             android:layout_width="fill_parent"
