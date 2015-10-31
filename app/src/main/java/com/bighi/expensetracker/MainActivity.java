@@ -1,6 +1,7 @@
 package com.bighi.expensetracker;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
@@ -34,7 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText txtDateOfExpense;
     private EditText txtTitle;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtCurrency;
     private SharedPreferences.OnSharedPreferenceChangeListener onChange;
     private Firebase myFirebaseRef;
+    private DatePickerDialog dateOfExpensePickerDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +64,14 @@ public class MainActivity extends AppCompatActivity {
         txtAmount = (EditText) findViewById(R.id.txtAmount);
         txtCurrency = (TextView) findViewById(R.id.txtCurrency);
 
-        EditText editTextDoExp = txtDateOfExpense;
-        editTextDoExp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        //EditText editTextDoExp = txtDateOfExpense;
+        txtDateOfExpense.setOnClickListener(this);
+
+        Calendar today = new GregorianCalendar();
+        dateOfExpensePickerDialog = new DatePickerDialog(getBaseContext(), new DateDialog(),
+                today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DAY_OF_MONTH));
+
+        /*txtDateOfExpense.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
@@ -73,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                     dialog.show(ft, "DatePicker");
                 }
             }
-        });
+        });*/
         //editTextDoExp.addTextChangedListener(new DateFormatTextWatcher(editTextDoExp));
 
         String currCurrency = AppUtil.getSelectedCurrency(getBaseContext());
@@ -95,10 +103,16 @@ public class MainActivity extends AppCompatActivity {
 
         setPreferenceChangeListener();
 
-        txtDateOfExpense.setClickable(false);
-        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        //txtDateOfExpense.setClickable(false);
+        //this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
+    @Override
+    public void onClick(View view) {
+        if(view == txtDateOfExpense) {
+            dateOfExpensePickerDialog.show();
+        }
+    }
 
     private void setPreferenceChangeListener() {
         if (onChange == null) {
@@ -170,10 +184,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnTodayClick(View view) {
+        txtDateOfExpense.setText(getTodaysDate());
+    }
+
+    public String getTodaysDate() {
         Calendar today = new GregorianCalendar();
         DateFormat df = new SimpleDateFormat(DateFormatTextWatcher.mmddyyyy);
         String todayStr = df.format(today.getTime());
-        txtDateOfExpense.setText(todayStr);
+        return todayStr;
     }
 }
 
