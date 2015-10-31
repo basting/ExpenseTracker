@@ -26,6 +26,7 @@ public class DateDialog extends DialogFragment implements DatePickerDialog.OnDat
         dateTextView = (TextView)view;
     }
 
+    @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);

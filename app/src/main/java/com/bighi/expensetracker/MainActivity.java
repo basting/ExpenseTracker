@@ -35,7 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity{
 
     private EditText txtDateOfExpense;
     private EditText txtTitle;
@@ -65,13 +65,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txtCurrency = (TextView) findViewById(R.id.txtCurrency);
 
         //EditText editTextDoExp = txtDateOfExpense;
-        txtDateOfExpense.setOnClickListener(this);
+        //txtDateOfExpense.setOnClickListener(this);
 
         Calendar today = new GregorianCalendar();
         dateOfExpensePickerDialog = new DatePickerDialog(getBaseContext(), new DateDialog(),
                 today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DAY_OF_MONTH));
 
-        /*txtDateOfExpense.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        txtDateOfExpense.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     dialog.show(ft, "DatePicker");
                 }
             }
-        });*/
+        });
         //editTextDoExp.addTextChangedListener(new DateFormatTextWatcher(editTextDoExp));
 
         String currCurrency = AppUtil.getSelectedCurrency(getBaseContext());
@@ -107,12 +107,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
-    @Override
+    /*@Override
     public void onClick(View view) {
         if(view == txtDateOfExpense) {
             dateOfExpensePickerDialog.show();
         }
-    }
+    }*/
 
     private void setPreferenceChangeListener() {
         if (onChange == null) {
