@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
         setPreferenceChangeListener();
 
+        txtDateOfExpense.setClickable(false);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
