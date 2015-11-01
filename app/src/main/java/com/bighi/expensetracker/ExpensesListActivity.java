@@ -11,6 +11,15 @@ import android.view.View;
  * @author Bastin Gomez
  * @since 01-Nov-15
  */
+
+/*
+ * TODO:
+ *  * Login screen
+ *  * List all expenses (all, daily, weekly, monthly, custom)
+ *  * Email with various types of reports
+ *  * Send SMS to add to expenses (future)
+ *  * Item wise reports (future)
+ */
 public class ExpensesListActivity extends AppCompatActivity {
 
     @Override
