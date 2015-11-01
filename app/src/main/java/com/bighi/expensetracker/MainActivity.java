@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity{
         txtAmount = (EditText) findViewById(R.id.txtAmount);
         txtCurrency = (TextView) findViewById(R.id.txtCurrency);
 
+        txtDateOfExpense.setKeyListener(null);
         txtDateOfExpense.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
