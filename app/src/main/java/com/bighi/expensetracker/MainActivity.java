@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity{
     private TextView txtCurrency;
     private SharedPreferences.OnSharedPreferenceChangeListener onChange;
     private Firebase myFirebaseRef;
-    private DatePickerDialog dateOfExpensePickerDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,13 +63,6 @@ public class MainActivity extends AppCompatActivity{
         txtAmount = (EditText) findViewById(R.id.txtAmount);
         txtCurrency = (TextView) findViewById(R.id.txtCurrency);
 
-        //EditText editTextDoExp = txtDateOfExpense;
-        //txtDateOfExpense.setOnClickListener(this);
-
-        Calendar today = new GregorianCalendar();
-        dateOfExpensePickerDialog = new DatePickerDialog(getBaseContext(), new DateDialog(),
-                today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DAY_OF_MONTH));
-
         txtDateOfExpense.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -82,7 +74,6 @@ public class MainActivity extends AppCompatActivity{
                 }
             }
         });
-        //editTextDoExp.addTextChangedListener(new DateFormatTextWatcher(editTextDoExp));
 
         String currCurrency = AppUtil.getSelectedCurrency(getBaseContext());
 
@@ -102,17 +93,7 @@ public class MainActivity extends AppCompatActivity{
         });
 
         setPreferenceChangeListener();
-
-        //txtDateOfExpense.setClickable(false);
-        //this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
-
-    /*@Override
-    public void onClick(View view) {
-        if(view == txtDateOfExpense) {
-            dateOfExpensePickerDialog.show();
-        }
-    }*/
 
     private void setPreferenceChangeListener() {
         if (onChange == null) {
