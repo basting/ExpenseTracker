@@ -25,7 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     private EditText txtDateOfExpense;
     private EditText txtTitle;
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity{
 
         String currCurrency = AppUtil.getSelectedCurrency(getBaseContext());
 
-        if(currCurrency == null) {
+        if (currCurrency == null) {
             currCurrency = NumberFormat.getCurrencyInstance().getCurrency().getCurrencyCode();
         }
 
