@@ -9,7 +9,10 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * @author Bastin Gomez
@@ -34,7 +37,10 @@ public class DateDialog extends DialogFragment implements DatePickerDialog.OnDat
 
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-        String date = year + "-" + (monthOfYear+1) + "-" + dayOfMonth;
-        dateTextView.setText(date);
+        GregorianCalendar cal = new GregorianCalendar(year, monthOfYear, dayOfMonth);
+        //String date = year + "-" + (monthOfYear+1) + "-" + dayOfMonth;
+        DateFormat df = new SimpleDateFormat(DateFormatTextWatcher.mmddyyyy);
+        String todayStr = df.format(cal.getTime());
+        dateTextView.setText(todayStr);
     }
 }

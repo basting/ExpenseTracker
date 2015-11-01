@@ -37,11 +37,12 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/txtDateOfExpense"
-                android:inputType="none"
                 android:layout_weight="1"
                 android:hint="@string/dateOfExpenseHint"
                 android:clickable="false"
-                android:enabled="true" />
+                android:enabled="true"
+                android:editable="false"
+                android:inputType="date" />
 
             <Button
                 style="?android:attr/buttonStyleSmall"
