@@ -158,7 +158,8 @@ public class MainActivity extends AppCompatActivity {
                 .setMessage("Add this expense?")
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(), "+Btn", Toast.LENGTH_SHORT).show();
+                        addExpenseToFirebase();
+                        Toast.makeText(getApplicationContext(), "Expense saved", Toast.LENGTH_LONG).show();
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -191,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
         DateFormat df = new SimpleDateFormat(DateDialog.MMM_DD_YYYY_EEE);
         Date expenseDate = null;
         try {
-            expenseDate = df.parse(txtAmount.getText().toString());
+            expenseDate = df.parse(txtDateOfExpense.getText().toString());
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -205,15 +206,6 @@ public class MainActivity extends AppCompatActivity {
         // Create a new, auto-generated child of that expense, and save the expense data there
         mFirebaseRef.push().setValue(expense);
         clearAllFields(false);
-
-    }
-
-    private void nullifyAllFields() {
-        final String EMPTY = "";
-        //txtDateOfExpense.setText(EMPTY);
-        txtTitle.setText(EMPTY);
-        txtAmount.setText(EMPTY);
-        txtDescription.setText(EMPTY);
     }
 
     /**
@@ -238,6 +230,14 @@ public class MainActivity extends AppCompatActivity {
             nullifyAllFields();
         }
 
+    }
+
+    private void nullifyAllFields() {
+        final String EMPTY = "";
+        //txtDateOfExpense.setText(EMPTY);
+        txtTitle.setText(EMPTY);
+        txtAmount.setText(EMPTY);
+        txtDescription.setText(EMPTY);
     }
 
     public void btnClearClick(View view) {
