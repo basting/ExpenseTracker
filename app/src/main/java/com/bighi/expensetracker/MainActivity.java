@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences.OnSharedPreferenceChangeListener onChange;
     private Firebase myFirebaseRef;
 
+    private Button btnToday;
+
     private static final String FIREBASE_URL = "https://expensetrackerbase.firebaseio.com/";
 
     @Override
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Firebase setup code
         Firebase.setAndroidContext(this);
-        myFirebaseRef = new Firebase(FIREBASE_URL);
+        myFirebaseRef = new Firebase(FIREBASE_URL).child("expenses");
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -56,7 +59,9 @@ public class MainActivity extends AppCompatActivity {
         txtDescription = (EditText) findViewById(R.id.txtDescription);
         txtAmount = (EditText) findViewById(R.id.txtAmount);
         txtCurrency = (TextView) findViewById(R.id.txtCurrency);
+        btnToday = (Button) findViewById(R.id.btnToday);
 
+        btnToday.performClick(); // auto-populate today's date
         txtDateOfExpense.setKeyListener(null);
         txtDateOfExpense.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -142,6 +147,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnAddClick(View view) {
+        if(!isReadyToSubmit()) {
+            return;
+        }
         new AlertDialog.Builder(this)
                 .setTitle("New Expense")
                 .setMessage("Add this expense?")
@@ -157,6 +165,14 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .show();
+    }
+
+    public boolean isReadyToSubmit() {
+        if(txtTitle.getText().toString().length() == 0 ) {
+            txtTitle.setError("Title is required!");
+            return false;
+        }
+        return true;
     }
 
     public void btnClearClick(View view) {
