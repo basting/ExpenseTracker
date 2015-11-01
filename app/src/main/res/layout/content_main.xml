@@ -65,9 +65,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txtCurrency"
-            android:hint="@string/labelCurrency"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true" />
+            android:hint="@string/labelCurrency" />
 
         <EditText
             android:layout_width="fill_parent"
