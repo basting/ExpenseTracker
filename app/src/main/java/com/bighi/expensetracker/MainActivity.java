@@ -172,6 +172,10 @@ public class MainActivity extends AppCompatActivity {
             txtTitle.setError("Title is required!");
             return false;
         }
+        if(txtAmount.getText().toString().length() == 0 ) {
+            txtAmount.setError("Amount is required!");
+            return false;
+        }
         return true;
     }
 
