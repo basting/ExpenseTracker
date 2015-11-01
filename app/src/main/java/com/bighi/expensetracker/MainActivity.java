@@ -37,13 +37,15 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences.OnSharedPreferenceChangeListener onChange;
     private Firebase myFirebaseRef;
 
+    private static final String FIREBASE_URL = "https://expensetrackerbase.firebaseio.com/";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //Firebase setup code
         Firebase.setAndroidContext(this);
-        myFirebaseRef = new Firebase("https://expensetrackerbase.firebaseio.com/");
+        myFirebaseRef = new Firebase(FIREBASE_URL);
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
