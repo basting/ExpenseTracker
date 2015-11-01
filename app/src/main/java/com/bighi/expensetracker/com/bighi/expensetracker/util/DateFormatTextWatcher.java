@@ -12,7 +12,7 @@ import java.util.Calendar;
  */
 public class DateFormatTextWatcher implements TextWatcher{
     private String current = "";
-    public final static String mmddyyyy = "MMM-dd, yyyy";
+    public final static String mmddyyyy = "MMM-dd, yyyy (EEE)";
     private Calendar cal = Calendar.getInstance();
     private EditText dateText;
     private final String REGEX1 = "[^\\d.]";
