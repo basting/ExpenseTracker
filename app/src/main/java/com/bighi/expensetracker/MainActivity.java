@@ -158,23 +158,6 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    /*@Override
-    public Dialog onCreateDialog(Bundle savedInstance) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
-        // Add the buttons
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                Toast.makeText(getApplicationContext(), "Go ahead and add expense", Toast.LENGTH_LONG).show();
-            }
-        });
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                Toast.makeText(getApplicationContext(), "cancelled action", Toast.LENGTH_LONG).show();
-            }
-        });
-        return builder.create();
-    }*/
-
     public void btnClearClick(View view) {
         final String EMPTY = "";
         txtDateOfExpense.setText(EMPTY);
