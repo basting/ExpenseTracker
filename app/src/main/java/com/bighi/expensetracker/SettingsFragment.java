@@ -3,6 +3,11 @@ package com.bighi.expensetracker;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 
+/**
+ * @author Bastin Gomez
+ * @since 20-Oct-15
+ */
+
 public class SettingsFragment extends PreferenceFragment {
 
     @Override

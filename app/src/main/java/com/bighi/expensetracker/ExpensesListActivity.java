@@ -7,6 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+/**
+ * @author Bastin Gomez
+ * @since 01-Nov-15
+ */
 public class ExpensesListActivity extends AppCompatActivity {
 
     @Override

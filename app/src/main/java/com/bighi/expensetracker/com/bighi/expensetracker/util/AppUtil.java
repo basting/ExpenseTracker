@@ -6,7 +6,8 @@ import android.preference.PreferenceManager;
 
 /**
  * @author Bastin Gomez
- * */
+ * @since 22-Oct-15
+ */
 public class AppUtil {
     public static String getSelectedCurrency(Context context) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);

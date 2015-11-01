@@ -31,6 +31,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+/**
+ * @author Bastin Gomez
+ * @since 20-Oct-15
+ */
 public class MainActivity extends AppCompatActivity {
 
     private EditText txtDateOfExpense;
@@ -203,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
         // Create our 'model', an Expense object
         Expense expense = new Expense(title, description, amount,
                                             currencyCode, expenseDate, userName);
-        // Create a new, auto-generated child of that expense, and save the expense data there
+        // Create a new, auto-generated child of expenses, and save the expense data there
         mFirebaseRef.push().setValue(expense);
         clearAllFields(false);
     }
