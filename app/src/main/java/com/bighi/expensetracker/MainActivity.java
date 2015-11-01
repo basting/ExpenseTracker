@@ -18,14 +18,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bighi.expensetracker.com.bighi.expensetracker.data.Expense;
 import com.bighi.expensetracker.com.bighi.expensetracker.util.AppUtil;
 import com.bighi.expensetracker.com.bighi.expensetracker.util.DateDialog;
 import com.firebase.client.Firebase;
 
 import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtAmount;
     private TextView txtCurrency;
     private SharedPreferences.OnSharedPreferenceChangeListener onChange;
-    private Firebase myFirebaseRef;
+    private Firebase mFirebaseRef;
 
-    private Button btnToday;
+    private static final String DUMMY_USER = "darsanab";
 
     private static final String FIREBASE_URL = "https://expensetrackerbase.firebaseio.com/";
 
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Firebase setup code
         Firebase.setAndroidContext(this);
-        myFirebaseRef = new Firebase(FIREBASE_URL).child("expenses");
+        mFirebaseRef = new Firebase(FIREBASE_URL).child("expenses");
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -59,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         txtDescription = (EditText) findViewById(R.id.txtDescription);
         txtAmount = (EditText) findViewById(R.id.txtAmount);
         txtCurrency = (TextView) findViewById(R.id.txtCurrency);
-        btnToday = (Button) findViewById(R.id.btnToday);
+        Button btnToday = (Button) findViewById(R.id.btnToday);
 
         btnToday.performClick(); // auto-populate today's date
         txtDateOfExpense.setKeyListener(null);
@@ -179,25 +182,66 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public void btnClearClick(View view) {
+    private void addExpenseToFirebase() {
+        String title = txtTitle.getText().toString();
+        String description = txtDescription.getText().toString();
+        String amount = txtAmount.getText().toString();
+        String currencyCode = txtCurrency.getText().toString();
 
-        new AlertDialog.Builder(this)
-                .setMessage("Clear the fields?")
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        final String EMPTY = "";
-                        txtDateOfExpense.setText(EMPTY);
-                        txtTitle.setText(EMPTY);
-                        txtAmount.setText(EMPTY);
-                        txtDescription.setText(EMPTY);
-                    }
-                })
-                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(), "Not cleared", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .show();
+        DateFormat df = new SimpleDateFormat(DateDialog.MMM_DD_YYYY_EEE);
+        Date expenseDate = null;
+        try {
+            expenseDate = df.parse(txtAmount.getText().toString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        //TODO: to change after the login screen is placed
+        String userName = DUMMY_USER;
+
+        // Create our 'model', an Expense object
+        Expense expense = new Expense(title, description, amount,
+                                            currencyCode, expenseDate, userName);
+        // Create a new, auto-generated child of that expense, and save the expense data there
+        mFirebaseRef.push().setValue(expense);
+        clearAllFields(false);
+
+    }
+
+    private void nullifyAllFields() {
+        final String EMPTY = "";
+        //txtDateOfExpense.setText(EMPTY);
+        txtTitle.setText(EMPTY);
+        txtAmount.setText(EMPTY);
+        txtDescription.setText(EMPTY);
+    }
+
+    /**
+     * @param promptUser indicates whether to ask user for confirmation before clearing fields
+     */
+    public void clearAllFields(boolean promptUser) {
+        if (promptUser) {
+            new AlertDialog.Builder(this)
+                    .setMessage("Clear the fields?")
+                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            nullifyAllFields();
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(getApplicationContext(), "Not cleared", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .show();
+        } else {
+            nullifyAllFields();
+        }
+
+    }
+
+    public void btnClearClick(View view) {
+        clearAllFields(true);
     }
 
     public void btnTodayClick(View view) {
