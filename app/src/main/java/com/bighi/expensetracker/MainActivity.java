@@ -140,7 +140,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnAddClick(View view) {
-        //Toast.makeText(getApplicationContext(), txtDescription.getText() + ":" + txtAmount.getText(), Toast.LENGTH_LONG).show();
         new AlertDialog.Builder(this)
                 .setTitle("New Expense")
                 .setMessage("Are you sure you want to add this expense?")
@@ -159,11 +158,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnClearClick(View view) {
-        final String EMPTY = "";
-        txtDateOfExpense.setText(EMPTY);
-        txtTitle.setText(EMPTY);
-        txtAmount.setText(EMPTY);
-        txtDescription.setText(EMPTY);
+
+        new AlertDialog.Builder(this)
+                .setMessage("Clear the fields?")
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        final String EMPTY = "";
+                        txtDateOfExpense.setText(EMPTY);
+                        txtTitle.setText(EMPTY);
+                        txtAmount.setText(EMPTY);
+                        txtDescription.setText(EMPTY);
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(), "Not cleared", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .show();
     }
 
     public void btnTodayClick(View view) {
