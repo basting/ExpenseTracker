@@ -19,10 +19,10 @@ import java.util.GregorianCalendar;
  */
 public class DateDialog extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
-    TextView dateTextView;
+    private TextView dateTextView;
 
     public void setView(View view) {
-        dateTextView = (TextView)view;
+        dateTextView = (TextView) view;
     }
 
     @Override

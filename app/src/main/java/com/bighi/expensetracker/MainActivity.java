@@ -59,11 +59,15 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
-                    DateDialog dialog = new DateDialog();
-                    dialog.setView(v);
-                    FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    dialog.show(ft, "DatePicker");
+                    showDateDialog(v);
                 }
+            }
+        });
+        txtDateOfExpense.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                showDateDialog(v);
             }
         });
 
@@ -85,6 +89,13 @@ public class MainActivity extends AppCompatActivity{
         });
 
         setPreferenceChangeListener();
+    }
+
+    private void showDateDialog(View v) {
+        DateDialog dialog = new DateDialog();
+        dialog.setView(v);
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        dialog.show(ft, "DatePicker");
     }
 
     private void setPreferenceChangeListener() {
