@@ -12,6 +12,7 @@ public class Expense {
     private String amount;
     private String currencyCode;
     private Date expenseDate;
+    private String userName;
 
     // Required default constructor for Firebase object mapping
     @SuppressWarnings("unused")
@@ -22,12 +23,14 @@ public class Expense {
                    String description,
                    String amount,
                    String currencyCode,
-                   Date expenseDate) {
+                   Date expenseDate,
+                   String userName) {
         this.title = title;
         this.description = description;
         this.amount = amount;
         this.currencyCode = currencyCode;
         this.expenseDate = expenseDate;
+        this.userName = userName;
     }
 
     public String getTitle() {
@@ -48,5 +51,9 @@ public class Expense {
 
     public Date getExpenseDate() {
         return expenseDate;
+    }
+
+    public String getUserName() {
+        return userName;
     }
 }
