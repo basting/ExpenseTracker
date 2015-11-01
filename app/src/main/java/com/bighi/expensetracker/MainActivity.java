@@ -173,8 +173,7 @@ public class MainActivity extends AppCompatActivity {
     public String getTodaysDate() {
         Calendar today = new GregorianCalendar();
         DateFormat df = new SimpleDateFormat(DateDialog.MMM_DD_YYYY_EEE);
-        String todayStr = df.format(today.getTime());
-        return todayStr;
+        return df.format(today.getTime());
     }
 }
 
