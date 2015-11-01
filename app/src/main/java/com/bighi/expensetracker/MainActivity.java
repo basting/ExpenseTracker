@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import com.bighi.expensetracker.com.bighi.expensetracker.util.AppUtil;
 import com.bighi.expensetracker.com.bighi.expensetracker.util.DateDialog;
-import com.bighi.expensetracker.com.bighi.expensetracker.util.DateFormatTextWatcher;
 import com.firebase.client.Firebase;
 
 import java.text.DateFormat;
@@ -173,7 +172,7 @@ public class MainActivity extends AppCompatActivity{
 
     public String getTodaysDate() {
         Calendar today = new GregorianCalendar();
-        DateFormat df = new SimpleDateFormat(DateFormatTextWatcher.mmddyyyy);
+        DateFormat df = new SimpleDateFormat(DateDialog.MMM_DD_YYYY_EEE);
         String todayStr = df.format(today.getTime());
         return todayStr;
     }

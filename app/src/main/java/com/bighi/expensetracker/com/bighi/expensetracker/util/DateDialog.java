@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import com.bighi.expensetracker.MainActivity;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -20,6 +22,7 @@ import java.util.GregorianCalendar;
 public class DateDialog extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
     private TextView dateTextView;
+    public static final String MMM_DD_YYYY_EEE = "MMM-dd, yyyy (EEE)";
 
     public void setView(View view) {
         dateTextView = (TextView) view;
@@ -32,14 +35,14 @@ public class DateDialog extends DialogFragment implements DatePickerDialog.OnDat
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
 
-        return(new DatePickerDialog(getActivity(), this, year, month, day));
+        return (new DatePickerDialog(getActivity(), this, year, month, day));
     }
 
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
         GregorianCalendar cal = new GregorianCalendar(year, monthOfYear, dayOfMonth);
         //String date = year + "-" + (monthOfYear+1) + "-" + dayOfMonth;
-        DateFormat df = new SimpleDateFormat(DateFormatTextWatcher.mmddyyyy);
+        DateFormat df = new SimpleDateFormat(MMM_DD_YYYY_EEE);
         String todayStr = df.format(cal.getTime());
         dateTextView.setText(todayStr);
     }
