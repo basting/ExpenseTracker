@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
     public void btnAddClick(View view) {
         new AlertDialog.Builder(this)
                 .setTitle("New Expense")
-                .setMessage("Are you sure you want to add this expense?")
+                .setMessage("Add this expense?")
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(getApplicationContext(), "+Btn", Toast.LENGTH_SHORT).show();
