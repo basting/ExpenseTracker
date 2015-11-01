@@ -23,7 +23,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txtTitle"
-            android:hint="@string/label_title" />
+            android:hint="@string/label_title"
+            android:singleLine="true" />
 
         <LinearLayout
             android:orientation="horizontal"
