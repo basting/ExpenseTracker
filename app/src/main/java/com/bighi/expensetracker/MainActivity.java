@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtCurrency;
     private SharedPreferences.OnSharedPreferenceChangeListener onChange;
     private Firebase mFirebaseRef;
-
+    private Button btnToday;
     private static final String DUMMY_USER = "darsanab";
 
     private static final String FIREBASE_URL = "https://expensetrackerbase.firebaseio.com/";
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         txtDescription = (EditText) findViewById(R.id.txtDescription);
         txtAmount = (EditText) findViewById(R.id.txtAmount);
         txtCurrency = (TextView) findViewById(R.id.txtCurrency);
-        Button btnToday = (Button) findViewById(R.id.btnToday);
+        btnToday = (Button) findViewById(R.id.btnToday);
 
         btnToday.performClick(); // auto-populate today's date
         txtDateOfExpense.setKeyListener(null);
@@ -208,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
         // Create our 'model', an Expense object
         Expense expense = new Expense(title, description, amount,
                                             currencyCode, expenseDate, userName,
-                                                TimeZone.getDefault());
+                                                TimeZone.getDefault().getID());
         // Create a new, auto-generated child of expenses, and save the expense data there
         mFirebaseRef.push().setValue(expense);
         clearAllFields(false);
@@ -240,10 +240,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void nullifyAllFields() {
         final String EMPTY = "";
-        //txtDateOfExpense.setText(EMPTY);
         txtTitle.setText(EMPTY);
         txtAmount.setText(EMPTY);
         txtDescription.setText(EMPTY);
+        btnToday.performClick(); //reset date means set to today's date
     }
 
     public void btnClearClick(View view) {
