@@ -1,6 +1,7 @@
 package com.bighi.expensetracker.com.bighi.expensetracker.data;
 
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * @author Bastin Gomez
@@ -13,6 +14,7 @@ public class Expense {
     private String currencyCode;
     private Date expenseDate;
     private String userName;
+    private TimeZone expenseTimeZone;
 
     // Required default constructor for Firebase object mapping
     @SuppressWarnings("unused")
@@ -24,36 +26,49 @@ public class Expense {
                    String amount,
                    String currencyCode,
                    Date expenseDate,
-                   String userName) {
+                   String userName,
+                   TimeZone expenseTimeZone) {
         this.title = title;
         this.description = description;
         this.amount = amount;
         this.currencyCode = currencyCode;
         this.expenseDate = expenseDate;
         this.userName = userName;
+        this.expenseTimeZone = expenseTimeZone;
     }
 
+    @SuppressWarnings("unused")
     public String getTitle() {
         return title;
     }
 
+    @SuppressWarnings("unused")
     public String getDescription() {
         return description;
     }
 
+    @SuppressWarnings("unused")
     public String getAmount() {
         return amount;
     }
 
+    @SuppressWarnings("unused")
     public String getCurrencyCode() {
         return currencyCode;
     }
 
+    @SuppressWarnings("unused")
     public Date getExpenseDate() {
         return expenseDate;
     }
 
+    @SuppressWarnings("unused")
     public String getUserName() {
         return userName;
+    }
+
+    @SuppressWarnings("unused")
+    public TimeZone getExpenseTimeZone() {
+        return expenseTimeZone;
     }
 }

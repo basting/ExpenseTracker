@@ -19,6 +19,7 @@ import android.view.View;
  *  * Email with various types of reports
  *  * Send SMS to add to expenses (future)
  *  * Item wise reports (future)
+ *  * Website for accessing expenses (future)
  */
 public class ExpensesListActivity extends AppCompatActivity {
 
