@@ -68,7 +68,7 @@ public class Expense {
     }
 
     @SuppressWarnings("unused")
-    public TimeZone getExpenseTimeZone() {
+    public TimeZone getExpenseTimezone() {
         return expenseTimezone;
     }
 }
