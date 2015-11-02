@@ -14,7 +14,7 @@ public class Expense {
     private String currencyCode;
     private Date expenseDate;
     private String userName;
-    private String expenseTimeZone;
+    private TimeZone expenseTimezone;
 
     // Required default constructor for Firebase object mapping
     @SuppressWarnings("unused")
@@ -27,14 +27,14 @@ public class Expense {
                    String currencyCode,
                    Date expenseDate,
                    String userName,
-                   String expenseTimeZone) {
+                   TimeZone expenseTimezone) {
         this.title = title;
         this.description = description;
         this.amount = amount;
         this.currencyCode = currencyCode;
         this.expenseDate = expenseDate;
         this.userName = userName;
-        this.expenseTimeZone = expenseTimeZone;
+        this.expenseTimezone = expenseTimezone;
     }
 
     @SuppressWarnings("unused")
@@ -68,7 +68,7 @@ public class Expense {
     }
 
     @SuppressWarnings("unused")
-    public String getExpenseTimeZone() {
-        return expenseTimeZone;
+    public TimeZone getExpenseTimeZone() {
+        return expenseTimezone;
     }
 }

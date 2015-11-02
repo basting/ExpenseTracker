@@ -208,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
         // Create our 'model', an Expense object
         Expense expense = new Expense(title, description, amount,
                                             currencyCode, expenseDate, userName,
-                                                TimeZone.getDefault().getID());
+                                                TimeZone.getDefault());
         // Create a new, auto-generated child of expenses, and save the expense data there
         mFirebaseRef.push().setValue(expense);
         clearAllFields(false);
