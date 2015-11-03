@@ -10,4 +10,10 @@
     tools:showIn="@layout/activity_expenses_list"
     tools:context="com.bighi.expensetracker.ExpensesListActivity">
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listViewExpenses"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
