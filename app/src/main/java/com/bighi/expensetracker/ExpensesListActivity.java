@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ListView;
 
+import com.firebase.client.Firebase;
+
 /**
  * @author Bastin Gomez
  * @since 01-Nov-15
@@ -24,11 +26,15 @@ import android.widget.ListView;
  */
 public class ExpensesListActivity extends AppCompatActivity {
 
+    private Firebase mFirebaseRef;
     ListView listViewExpenses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mFirebaseRef = MainActivity.getFirebaseInstance();
+
         setContentView(R.layout.activity_expenses_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

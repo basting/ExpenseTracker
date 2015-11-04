@@ -50,13 +50,22 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String FIREBASE_URL = "https://expensetrackerbase.firebaseio.com/";
 
+    private static class FirebaseHolder {
+        public static final Firebase INSTANCE = new Firebase(FIREBASE_URL).child("expenses");
+    }
+
+    public static Firebase getFirebaseInstance() {
+        return FirebaseHolder.INSTANCE;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //Firebase setup code
         Firebase.setAndroidContext(this);
-        mFirebaseRef = new Firebase(FIREBASE_URL).child("expenses");
+        //mFirebaseRef = new Firebase(FIREBASE_URL).child("expenses");
+        mFirebaseRef = getFirebaseInstance();
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
