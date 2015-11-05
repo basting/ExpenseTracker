@@ -1,4 +1,4 @@
-package com.bighi.expensetracker.com.bighi.expensetracker;
+package com.bighi.expensetracker;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -31,8 +31,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.bighi.expensetracker.R;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
