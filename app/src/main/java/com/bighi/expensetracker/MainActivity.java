@@ -18,9 +18,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bighi.expensetracker.com.bighi.expensetracker.data.Expense;
-import com.bighi.expensetracker.com.bighi.expensetracker.util.AppUtil;
-import com.bighi.expensetracker.com.bighi.expensetracker.util.DateDialog;
+import com.bighi.expensetracker.data.Expense;
+import com.bighi.expensetracker.util.AppUtil;
+import com.bighi.expensetracker.util.DateDialog;
 import com.firebase.client.Firebase;
 
 import java.text.DateFormat;

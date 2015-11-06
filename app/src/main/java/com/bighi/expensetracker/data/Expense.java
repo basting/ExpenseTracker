@@ -1,7 +1,6 @@
-package com.bighi.expensetracker.com.bighi.expensetracker.data;
+package com.bighi.expensetracker.data;
 
 import java.util.Date;
-import java.util.TimeZone;
 
 /**
  * @author Bastin Gomez

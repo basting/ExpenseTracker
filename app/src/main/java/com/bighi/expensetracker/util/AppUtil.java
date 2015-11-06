@@ -1,4 +1,4 @@
-package com.bighi.expensetracker.com.bighi.expensetracker.util;
+package com.bighi.expensetracker.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
