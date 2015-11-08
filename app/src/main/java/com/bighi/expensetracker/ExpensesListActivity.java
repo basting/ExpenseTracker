@@ -37,7 +37,8 @@ public class ExpensesListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mFirebaseRef = MainActivity.getFirebaseInstance();
+        mFirebaseRef = new Firebase(MainActivity.FIREBASE_URL).child("expenses");
+        mFirebaseRef.keepSynced(true); // keep the expenses list in sync
 
         setContentView(R.layout.activity_expenses_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
