@@ -83,18 +83,18 @@ public class ExpensesListActivity extends AppCompatActivity {
         });
 
         // Finally, a little indication of connection status
-        mConnectedListener = mFirebaseRef.child("expenses").addValueEventListener(new ValueEventListener() {
+        mConnectedListener = mFirebaseRef.getRoot().child(".info/connected").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot == null) {
                     return;
-                }/*
+                }
                 boolean connected = (Boolean) dataSnapshot.getValue();
                 if (connected) {
                     Toast.makeText(ExpensesListActivity.this, "Connected to Firebase", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(ExpensesListActivity.this, "Disconnected from Firebase", Toast.LENGTH_SHORT).show();
-                }*/
+                }
             }
 
             @Override
