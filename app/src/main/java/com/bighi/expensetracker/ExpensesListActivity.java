@@ -71,7 +71,7 @@ public class ExpensesListActivity extends AppCompatActivity {
         // Setup our view and list adapter. Ensure it scrolls to the bottom as data changes
         final ListView listView = listViewExpenses;
         // Tell our list adapter that we only want 50 messages at a time
-        mExpenseListAdapter = new ExpensesListAdapter(mFirebaseRef.limit(50), this,
+        mExpenseListAdapter = new ExpensesListAdapter(mFirebaseRef.limitToFirst(50), this,
                                             R.layout.expense_item, "darsanab");
         listView.setAdapter(mExpenseListAdapter);
         mExpenseListAdapter.registerDataSetObserver(new DataSetObserver() {
@@ -83,9 +83,12 @@ public class ExpensesListActivity extends AppCompatActivity {
         });
 
         // Finally, a little indication of connection status
-        mConnectedListener = mFirebaseRef.getRoot().child("expenses").addValueEventListener(new ValueEventListener() {
+        mConnectedListener = mFirebaseRef.child("expenses").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot == null) {
+                    return;
+                }
                 boolean connected = (Boolean) dataSnapshot.getValue();
                 if (connected) {
                     Toast.makeText(ExpensesListActivity.this, "Connected to Firebase", Toast.LENGTH_SHORT).show();
