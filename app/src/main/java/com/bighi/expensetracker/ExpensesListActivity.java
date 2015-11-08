@@ -1,5 +1,6 @@
 package com.bighi.expensetracker;
 
+import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -7,11 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.bighi.expensetracker.adapter.FirebaseListAdapter;
+import com.bighi.expensetracker.adapter.ExpensesListAdapter;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
-
-import java.util.HashMap;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 /**
  * @author Bastin Gomez
@@ -31,7 +34,8 @@ public class ExpensesListActivity extends AppCompatActivity {
 
     private Firebase mFirebaseRef;
     private ListView listViewExpenses;
-    private FirebaseListAdapter<HashMap> mExpenseListAdapter;
+    private ExpensesListAdapter mExpenseListAdapter;
+    private ValueEventListener mConnectedListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,49 @@ public class ExpensesListActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Setup our view and list adapter. Ensure it scrolls to the bottom as data changes
+        final ListView listView = listViewExpenses;
+        // Tell our list adapter that we only want 50 messages at a time
+        mExpenseListAdapter = new ExpensesListAdapter(mFirebaseRef.limit(50), this,
+                                            R.layout.expense_item, "darsanab");
+        listView.setAdapter(mExpenseListAdapter);
+        mExpenseListAdapter.registerDataSetObserver(new DataSetObserver() {
+            @Override
+            public void onChanged() {
+                super.onChanged();
+                listView.setSelection(mExpenseListAdapter.getCount() - 1);
+            }
+        });
+
+        // Finally, a little indication of connection status
+        mConnectedListener = mFirebaseRef.getRoot().child("expenses").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                boolean connected = (Boolean) dataSnapshot.getValue();
+                if (connected) {
+                    Toast.makeText(ExpensesListActivity.this, "Connected to Firebase", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ExpensesListActivity.this, "Disconnected from Firebase", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                // No-op
+            }
+        });
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mFirebaseRef.getRoot().child("expenses").removeEventListener(mConnectedListener);
+        mExpenseListAdapter.cleanup();
     }
 
 }
