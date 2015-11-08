@@ -1,8 +1,11 @@
 package com.bighi.expensetracker.adapter;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.view.View;
+import android.widget.TextView;
 
+import com.bighi.expensetracker.R;
 import com.bighi.expensetracker.data.Expense;
 import com.firebase.client.Query;
 
@@ -21,7 +24,18 @@ public class ExpensesListAdapter extends FirebaseListAdapter<Expense> {
     }
 
     @Override
-    protected void populateView(View v, Expense model) {
-
+    protected void populateView(View view, Expense expense) {
+        // Map a Expense object to an entry in our listview
+        String userName = expense.getUserName();
+        TextView userNameText = (TextView) view.findViewById(R.id.userExpenseItem);
+        userNameText.setText(userName + ": ");
+        // If the message was sent by this user, color it differently
+        if (userName != null && userName.equals(mUsername)) {
+            userNameText.setTextColor(Color.RED);
+        } else {
+            userNameText.setTextColor(Color.BLUE);
+        }
+        ((TextView) view.findViewById(R.id.titleExpenseItem)).setText(expense.getTitle());
+        ((TextView) view.findViewById(R.id.amountExpenseItem)).setText(expense.getAmount());
     }
 }
