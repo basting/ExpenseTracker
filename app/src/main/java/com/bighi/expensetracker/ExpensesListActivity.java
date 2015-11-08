@@ -8,7 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ListView;
 
+import com.bighi.expensetracker.adapter.FirebaseListAdapter;
 import com.firebase.client.Firebase;
+
+import java.util.HashMap;
 
 /**
  * @author Bastin Gomez
@@ -27,7 +30,8 @@ import com.firebase.client.Firebase;
 public class ExpensesListActivity extends AppCompatActivity {
 
     private Firebase mFirebaseRef;
-    ListView listViewExpenses;
+    private ListView listViewExpenses;
+    private FirebaseListAdapter<HashMap> mExpenseListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
