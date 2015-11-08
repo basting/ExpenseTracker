@@ -1,5 +1,6 @@
 package com.bighi.expensetracker;
 
+import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -54,8 +55,12 @@ public class ExpensesListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Opening Expense creation window", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+                Intent homeIntent = new Intent(getApplicationContext(),ExpensesListActivity.class);
+                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(homeIntent);
             }
         });
     }

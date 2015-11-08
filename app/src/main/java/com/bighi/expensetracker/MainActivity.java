@@ -108,8 +108,12 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Opening the Expense list", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                Intent homeIntent = new Intent(getApplicationContext(),ExpensesListActivity.class);
+                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(homeIntent);
+
             }
         });
 
