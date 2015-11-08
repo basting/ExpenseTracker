@@ -48,15 +48,15 @@ public class MainActivity extends AppCompatActivity {
     private Button btnToday;
     private static final String DUMMY_USER = "darsanab";
 
-    private static final String FIREBASE_URL = "https://expensetrackerbase.firebaseio.com/";
+    public static final String FIREBASE_URL = "https://expensetrackerbase.firebaseio.com/";
 
-    private static class FirebaseHolder {
+    /*private static class FirebaseHolder {
         public static final Firebase INSTANCE = new Firebase(FIREBASE_URL).child("expenses");
     }
 
     public static Firebase getFirebaseInstance() {
         return FirebaseHolder.INSTANCE;
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Firebase setup code
         Firebase.setAndroidContext(this);
-        //mFirebaseRef = new Firebase(FIREBASE_URL).child("expenses");
-        mFirebaseRef = getFirebaseInstance();
+        mFirebaseRef = new Firebase(FIREBASE_URL).child("expenses");
+        //mFirebaseRef = getFirebaseInstance();
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
