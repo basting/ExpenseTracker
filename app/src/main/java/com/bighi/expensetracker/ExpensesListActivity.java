@@ -58,7 +58,7 @@ public class ExpensesListActivity extends AppCompatActivity {
                 Snackbar.make(view, "Opening Expense creation window", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
-                Intent homeIntent = new Intent(getApplicationContext(),ExpensesListActivity.class);
+                Intent homeIntent = new Intent(getApplicationContext(),MainActivity.class);
                 homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(homeIntent);
             }
@@ -88,13 +88,13 @@ public class ExpensesListActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot == null) {
                     return;
-                }
+                }/*
                 boolean connected = (Boolean) dataSnapshot.getValue();
                 if (connected) {
                     Toast.makeText(ExpensesListActivity.this, "Connected to Firebase", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(ExpensesListActivity.this, "Disconnected from Firebase", Toast.LENGTH_SHORT).show();
-                }
+                }*/
             }
 
             @Override
