@@ -10,6 +10,7 @@ public class ExpensesApplication extends android.app.Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        //Firebase setup code
         Firebase.setAndroidContext(this);
     }
 }

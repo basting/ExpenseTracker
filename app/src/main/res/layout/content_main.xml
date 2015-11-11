@@ -39,7 +39,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/txtDateOfExpense"
+                android:id="@+id/txtDOfExpense"
                 android:layout_weight="1"
                 android:hint="@string/dateOfExpenseHint"
                 android:clickable="false"

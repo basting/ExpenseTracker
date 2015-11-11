@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Firebase setup code
         mFirebaseRef = new Firebase(FIREBASE_URL).child("expenses");
         //mFirebaseRef = getFirebaseInstance();
 
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        txtDateOfExpense = (EditText) findViewById(R.id.txtDateOfExpense);
+        txtDateOfExpense = (EditText) findViewById(R.id.txtDOfExpense);
         txtTitle = (EditText) findViewById(R.id.txtTitle);
         txtDescription = (EditText) findViewById(R.id.txtDescription);
         txtAmount = (EditText) findViewById(R.id.txtAmount);
