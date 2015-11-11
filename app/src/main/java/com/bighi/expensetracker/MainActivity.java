@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         //Firebase setup code
-        Firebase.setAndroidContext(this);
         mFirebaseRef = new Firebase(FIREBASE_URL).child("expenses");
         //mFirebaseRef = getFirebaseInstance();
 
