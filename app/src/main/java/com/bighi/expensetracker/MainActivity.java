@@ -2,6 +2,7 @@ package com.bighi.expensetracker;
 
 import android.app.AlertDialog;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -92,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                hideSoftKeyboard();
                 showDateDialog(v);
             }
         });
@@ -110,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Opening the Expense list", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                Intent homeIntent = new Intent(getApplicationContext(),ExpensesListActivity.class);
+                Intent homeIntent = new Intent(getApplicationContext(), ExpensesListActivity.class);
                 homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(homeIntent);
 
@@ -118,6 +121,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setPreferenceChangeListener();
+    }
+
+    private void hideSoftKeyboard() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
     private void showDateDialog(View v) {
