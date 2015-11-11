@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
@@ -44,5 +45,12 @@ public class DateDialog extends DialogFragment implements DatePickerDialog.OnDat
         DateFormat df = new SimpleDateFormat(MMM_DD_YYYY_EEE);
         String todayStr = df.format(cal.getTime());
         dateTextView.setText(todayStr);
+    }
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        //hide the soft keyboard
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 }
