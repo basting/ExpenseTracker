@@ -35,6 +35,8 @@ import java.util.TimeZone;
 /**
  * @author Bastin Gomez
  * @since 20-Oct-15
+ *
+ * Activity which shows the form to create a new expense
  */
 public class MainActivity extends AppCompatActivity {
 
