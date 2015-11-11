@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * TODO: remove after connecting to a real authentication system.
      */
     private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
+            "darsanab:darsanab", "basting:basting"
     };
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
@@ -290,6 +290,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailView.setAdapter(adapter);
     }
 
+    @Override
+    public void finish() {
+
+    }
+
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
@@ -308,12 +313,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
+
 
             for (String credential : DUMMY_CREDENTIALS) {
                 String[] pieces = credential.split(":");
@@ -345,6 +345,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
+
     }
 }
 
