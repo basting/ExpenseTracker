@@ -47,10 +47,4 @@ public class DateDialog extends DialogFragment implements DatePickerDialog.OnDat
         dateTextView.setText(todayStr);
     }
 
-    @Override
-    public void dismiss() {
-        super.dismiss();
-        //hide the soft keyboard
-        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-    }
 }
