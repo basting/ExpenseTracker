@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
+                    hideSoftKeyboard(v);
                     showDateDialog(v);
                 }
             }
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                //hideSoftKeyboard(v);
+                hideSoftKeyboard(v);
                 showDateDialog(v);
             }
         });
@@ -127,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
         if (view != null) {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-            //imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
         }
     }
 
