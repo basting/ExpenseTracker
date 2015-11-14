@@ -11,6 +11,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -53,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String DUMMY_USER = "darsanab";
 
     public static final String FIREBASE_URL = "https://expensetrackerbase.firebaseio.com/";
+
+    private static final String TAG = MainActivity.class.toString();
 
     /*private static class FirebaseHolder {
         public static final Firebase INSTANCE = new Firebase(FIREBASE_URL).child("expenses");
@@ -112,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.i(TAG, "onClick to open ExpensesListActivity");
                 Snackbar.make(view, "Opening the Expense list", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 Intent homeIntent = new Intent(getApplicationContext(), ExpensesListActivity.class);
@@ -126,12 +130,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void hideSoftKeyboard(View view) {
         if (view != null) {
+            Log.i(TAG, "Hiding soft keyboard");
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 
     private void showDateDialog(View v) {
+        Log.i(TAG, "Showing date dialog");
         DateDialog dialog = new DateDialog();
         dialog.setView(v);
         FragmentTransaction ft = getFragmentManager().beginTransaction();
@@ -179,7 +185,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnAddClick(View view) {
+        Log.i(TAG, "Clicking Add button");
         if(!isReadyToSubmit()) {
+            Log.i(TAG, "Is not ready to Submit");
             return;
         }
         new AlertDialog.Builder(this)
@@ -213,6 +221,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addExpenseToFirebase() {
+        Log.i(TAG, "Adding expense to Firebase");
         String title = txtTitle.getText().toString();
         String description = txtDescription.getText().toString();
         String amount = txtAmount.getText().toString();
@@ -242,6 +251,7 @@ public class MainActivity extends AppCompatActivity {
      * @param promptUser indicates whether to ask user for confirmation before clearing fields
      */
     public void clearAllFields(boolean promptUser) {
+        Log.i(TAG, "Clearing all fields");
         if (promptUser) {
             new AlertDialog.Builder(this)
                     .setMessage("Clear the fields?")
@@ -263,6 +273,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void nullifyAllFields() {
+        Log.i(TAG, "Clearing all fields");
         final String EMPTY = "";
         txtTitle.setText(EMPTY);
         txtAmount.setText(EMPTY);
