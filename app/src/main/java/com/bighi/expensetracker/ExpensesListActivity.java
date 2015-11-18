@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
@@ -38,6 +39,8 @@ public class ExpensesListActivity extends AppCompatActivity {
     private ListView listViewExpenses;
     private ExpensesListAdapter mExpenseListAdapter;
     private ValueEventListener mConnectedListener;
+
+    private static final String TAG = ExpensesListActivity.class.toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +87,7 @@ public class ExpensesListActivity extends AppCompatActivity {
         });
 
         // Finally, a little indication of connection status
-        mConnectedListener = mFirebaseRef.getRoot().child(".info/connected").addValueEventListener(new ValueEventListener() {
+        /*mConnectedListener = mFirebaseRef.getRoot().child(".info/connected").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot == null) {
@@ -102,12 +105,13 @@ public class ExpensesListActivity extends AppCompatActivity {
             public void onCancelled(FirebaseError firebaseError) {
                 // No-op
             }
-        });
+        });*/
     }
 
     @Override
     public void onStop() {
         super.onStop();
+        Log.i(TAG, "Removing listener");
         mFirebaseRef.getRoot().child("expenses").removeEventListener(mConnectedListener);
         mExpenseListAdapter.cleanup();
     }
